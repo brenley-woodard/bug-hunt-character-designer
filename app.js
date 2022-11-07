@@ -1,7 +1,7 @@
 const headDropdown = document.getElementById('head-dropdown');
 const middleDropdown = document.getElementById('middle-dropdown');
 const bottomDropdown = document.getElementById('bottom-dropdown');
-const headEl = document.getElementById('top');
+const headEl = document.getElementById('head');
 const middleEl = document.getElementById('middle');
 const bottomEl = document.getElementById('bottom');
 const reportEl = document.getElementById('report');
@@ -19,7 +19,7 @@ headDropdown.addEventListener('change', () => {
     const value = headDropdown.value;
 
     headCount++;
-    headEl.backgroundImage = `url("./assets/${value}-head.png")`;
+    headEl.style.backgroundImage = `url("./assets/${value}-head.png")`;
     displayStats();
 });
 
@@ -27,7 +27,7 @@ middleDropdown.addEventListener('change', () => {
     const value = middleDropdown.value;
 
     middleCount++;
-    middleEl.backgroundImage = `url("./assets/${value}-middle.png")`;
+    middleEl.style.backgroundImage = `url("./assets/${value}-middle.png")`;
     displayStats();
 });
 
@@ -35,27 +35,27 @@ bottomDropdown.addEventListener('change', () => {
     const value = bottomDropdown.value;
 
     bottomCount++;
-    bottomEl.backgroundImage = `url("./assets/${value}-pants.png")`;
+    bottomEl.style.backgroundImage = `url("./assets/${value}-pants.png")`;
     displayStats();
 });
 
-catchphraseButton.addEventListener = () => {
+catchphraseButton.addEventListener('click', () => {
     const newCatchphrase = catchphraseInput.value;
     catchphrases.push(newCatchphrase);
 
     catchphraseInput.value = '';
     displayCatchphrases();
-};
+});
 
 function displayStats() {
     reportEl.textContent = `You have changed the head ${headCount} times, the body ${middleCount} times, and the pants ${bottomCount} times. And nobody can forget your character's classic catchphrases:`;
 }
 
 function displayCatchphrases() {
+    catchphrasesEl.textContent = '';
+
     for (let catchphrase of catchphrases) {
         const p = document.createElement('p');
-
-        p.add('catchphrase');
         p.textContent = catchphrase;
         catchphrasesEl.append(p);
     }
